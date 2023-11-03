@@ -1,0 +1,75 @@
+var red = 100;
+var blue = 200;
+var green = 100;
+
+var headX = 200;
+var headY = 200;
+var headDirection = 1;
+
+var bodyX = 300;
+var bodyY =100;
+var bodyDirection = 3;
+
+var sie = 34;
+var count = 0;
+var sizeDirection =4;
+function setup() {
+    createCanvas(400,600);
+  
+  }
+  
+  function draw() {
+    background(red,blue,green);
+
+    fill();
+    rect(130,200,190,230);
+    rect(10,330,400,400);
+    bodyY += bodyDirection;
+    if(bodyY <= 0 || bodyY >= 450)
+    {
+        bodyDirection *= -1;
+    }
+    //neck and torso 
+
+    //head and ear
+    ellipse(330,200,60,100);
+    circle(headX,headY,250);
+    headX+=headDirection;
+    if(headX >= 418 || headX <= 82)
+    {
+        headDirection *= -1;
+    }
+
+  
+
+    rect(180,160,100,80);
+    rect(70,170,100,80);
+    //glasses
+
+    circle(225,200,50);
+    circle(110,210,50);
+    //eyes
+
+    stokeWeight(10);
+    fill(0);
+    point(225,200);
+    point(110,210);
+    //pupils
+
+    fill(120);
+    textSize(25);
+    size+= sizeDirection;
+    count++;
+    if(count > 5)
+    {
+        sizeDirection *=-1;
+        count = 0;
+    }
+    line(200,200,200,200);
+    triangle(30,30,30,30,30,30);
+
+    //title and Signiture
+    text('Zoe Sampson',300,550);
+    text('Portrait Breakdown',290,600);
+    
+  }
