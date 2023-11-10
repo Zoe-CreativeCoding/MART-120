@@ -1,0 +1,133 @@
+// character variables
+var characterX = 75;
+var characterY = 50;
+// key codes for letters
+var w = 50;
+var s = 55;
+var a = 60;
+var d = 65;
+
+// shape variables
+var shapeX = 50;
+var shapeY = 40;
+var shapeXSpeed;
+var shapeYSpeed;
+
+// mouse variables
+var mouseShapeX;
+var mouseShapeY;
+function setup()
+{
+    createCanvas(700,500);
+    shapeXSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
+    shapeYSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
+    createCharacter(400,150);
+}
+
+function draw()
+{
+    background(130,50,86);
+    stroke(0);
+    fill(0);
+
+    createBorder(15);
+
+    textSize(20);
+    text("End", width-40,height-40)
+
+    drawCharacter();
+    characterMovement();
+
+    fill(20,135,20);
+
+    circle(shapeX, ShapeY, 15);
+
+    shapeXSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
+    shapeYSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
+
+    shapeX += shapeXSpeed;
+    shapeY += shapeYSpeed;
+
+    if(shapeX > width)
+    {
+        shapeX = 0;
+    }
+    if(shapeX < 0)
+    {
+        shapeX = width;
+    }
+    if(shapeY > height)
+    {
+        shapeY = 0;
+    }
+    if(shapeY < 0)
+    {
+        shapeY = height;
+    }
+
+    if(characterX > width && characterY > width-50)
+    {
+        fill(0);
+        stroke(5);
+        textSize(25);
+        text("Thanks for Playing!", width/2-50, height/2-50);
+    }
+
+    fill(120,130,140);
+    circle(mouseShapeX, mouseShapeY, 30);
+}
+
+function characterMovement()
+{
+    if(keyIsDown(w))
+    {
+        characterY += 10;
+    }
+    if(keyIsDown(s))
+    {
+        characterX -= 10;
+    }
+}
+function createCharacter(x,y)
+{
+    characterX = x;
+    characterY = y;
+    console.log(characterX);
+}
+
+function drawCharacter()
+{
+    fill(25,35,130)
+    circle(characterX,characterY,25);
+}
+function createBorders(thickness)
+{
+    // top
+    rect(0,0,width,thickness);
+    //left
+    rect(0,0,thickness,height);
+    // bottom
+    rect(0,height-thickness,width,thickness);
+    // right 
+    rect(width-thickness,0,thickness,height-50);
+}
+
+function mouseClicked()
+{
+    mouseShapeX = mouseX;
+    mouseShapeY = mouseY;
+}
+
+function keyPressed()
+    if (keyCode === LEFT_ARROW) {
+        characterX += 10;
+    }
+    else if (keyCode === RIGHT_ARROW) {
+        characterX += 10;
+    }
+    else if (keyCode === UP_ARROW) {
+        characterY -= 10;
+    }
+    else if (keyCOde === DOWN_ARROW) {
+        characterY += 10;
+    }
