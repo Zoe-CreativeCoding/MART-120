@@ -1,0 +1,147 @@
+// character peramiters
+var characterX = 75;
+var characterY = 75;
+// Codes for each letter
+var w = 86;
+vaw s = 65;
+var a = 90;
+var d = 85;
+
+//shape stuff
+var shapeX = 40;
+var shapeY = 60;
+var shapeXSpeed;
+var shapeYSpeed;
+
+//Mouse stuff
+var mouseShapeX;
+var mouseShapeY;
+function setup()
+{
+    createCanvas(600, 600);
+    shapeXSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1)
+    shapeYSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1)
+    createCharacter(200,200);
+}
+
+function draw()
+{
+    background(200,50,80);
+    stroke(0);
+    fill(0);
+
+    createBorders(15);
+
+    textSize(15);
+    text("END", width-45,height-45)
+
+    drawCharacter();
+    characterMovement();
+
+    fill(15,150,20);
+    circle(shapeX, shapeY, 15);
+
+    shapeXSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1)
+    shapeYSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1)
+
+    shapeX += shapeXSpeed;
+    shapeY += shapeYSpeed;
+
+    if(shapeX > width)
+    {
+        shapeX = 0;
+    }
+    if(shapeX < 0)
+    {
+        shapeX = width;
+    }
+    if(shapeY > height)
+    {
+        shapeY = 0;
+    }
+    if(shapeY < 0)
+    {
+        shapeY = height;
+    }
+
+    if(characterX > width && characterY > width-50)
+    {
+        fill(0);
+        stroke(7);
+        textSize(30);
+        text("Congradulation", width/2-50, heighyt/2-50);
+    }
+
+    fill(130,140,150);
+    circle(mouseShapeX, mouseShapeY, 30);
+}
+
+function characterMovement()
+{
+    if(keyIsDown(w))
+    {
+        characterY -= 10;
+    }
+    if(keyIsDown(s))
+    {
+        characterY += 10;
+    }
+    if(keyIsDown(a))
+    {
+        characterX -= 10;
+        console.log("movement: " + characterX);
+    }
+    if(keyIsDown(d))
+    {
+        characterX += 10;
+    }
+}
+function createCharacter(x,y)
+{
+    characterX = x;
+    characterY = y;
+    console.log(characterX);
+}
+
+function drawCharacter()
+{
+    fill(25,50,130);
+    circle(characterX,CharacterY,30);
+}
+function createBorders(thickness)
+{
+    // top
+    rect(0,0,width,thickness);
+    //left
+    rect(0,0,thickness,height);
+    //bottom
+    rect(0, height-thickness,width,thickness);
+    //right
+    rect(width-thickness,0,thickness,height-50);
+}
+
+function mouseClicked()
+{
+    mouseShapeX = mouseX;
+    mouseShapeY = mouseY;
+}
+
+function keyPressed() 
+{
+    if (keyCode === LEFT_ARROR) 
+    {
+        characterX -= 10:
+    }
+    else if (keyCode === RIGHT_ARROR)
+    {
+        characterX += 10;
+    } 
+    else if (keyCode === UP_ARROW)
+    {
+        characterY -= 10;
+    }
+    else if (keyCode === DOWN_ARROW)
+    {
+        characterY += 10;
+    }
+}
