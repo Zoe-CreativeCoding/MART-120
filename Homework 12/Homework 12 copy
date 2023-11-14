@@ -3,7 +3,7 @@ var characterX = 75;
 var characterY = 75;
 // Codes for each letter
 var w = 86;
-vaw s = 65;
+var s = 65;
 var a = 90;
 var d = 85;
 
@@ -80,20 +80,20 @@ function characterMovement()
 {
     if(keyIsDown(w))
     {
-        characterY -= 10;
+        characterY -= 20;
     }
     if(keyIsDown(s))
     {
-        characterY += 10;
+        characterY += 20;
     }
     if(keyIsDown(a))
     {
-        characterX -= 10;
+        characterX -= 20;
         console.log("movement: " + characterX);
     }
     if(keyIsDown(d))
     {
-        characterX += 10;
+        characterX += 20;
     }
 }
 function createCharacter(x,y)
@@ -106,7 +106,7 @@ function createCharacter(x,y)
 function drawCharacter()
 {
     fill(25,50,130);
-    circle(characterX,CharacterY,30);
+    circle(characterX,characterY,30);
 }
 function createBorders(thickness)
 {
@@ -128,20 +128,20 @@ function mouseClicked()
 
 function keyPressed() 
 {
-    if (keyCode === LEFT_ARROR) 
+    if (keyCode === LEFT_ARROW) 
     {
-        characterX -= 10:
+        characterX -= 20;
     }
-    else if (keyCode === RIGHT_ARROR)
+    else if (keyCode === RIGHT_ARROW)
     {
-        characterX += 10;
+        characterX += 20;
     } 
     else if (keyCode === UP_ARROW)
     {
-        characterY -= 10;
+        characterY -= 20;
     }
     else if (keyCode === DOWN_ARROW)
     {
-        characterY += 10;
+        characterY += 20;
     }
 }
